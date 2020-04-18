@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import requests
 import datetime
+import  time
 # # 北工大疫情期间自动打卡签到用
 # # Login to the website and save session
 # post data & header & url
@@ -22,7 +23,7 @@ check_url = 'https://itsapp.bjut.edu.cn/ncov/wap/default/save'
 
 # datetime
 today_date = datetime.date.today().strftime('%Y%m%d')
-
+time_stamp = str(time.time()).replace('.', '')[0:10]
 # this data need to packet capture by yourself
 
 data1 = {
@@ -40,7 +41,7 @@ data1 = {
     "province": "xxxxxx",
     "city": "xxxxx",
     "geo_api_info": 'xxxxxxxxxxxxx',
-    "created": "xxxxxxxxxx",
+    "created": time_stamp,
     "sfzx": "0",
     "sfjcwhry": "0",
     "sfcyglq": "0",
@@ -67,3 +68,4 @@ data2 = {
    "desp": content
 }
 req = requests.post(api,data = data2)
+
